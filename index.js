@@ -232,32 +232,69 @@ user.afkTime = -1
 user.afkReason = ''
 }
 
-//━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//
+//punya gw
+const sendOrder = async(jid, text, orid, img, itcount, title, sellers, tokens, ammount) => {
+const order = generateWAMessageFromContent(jid, proto.Message.fromObject({
+ "orderMessage": {
+"orderId": orid, // Change ID
+"thumbnail": img, // Change the Image
+"itemCount": itcount, // Change the Item Count
+"status": "INQUIRY", // Don't Replace
+"surface": "CATALOG", // Don't Replace
+"orderTitle": title, // Change the title
+"message": text, // Change Message
+"sellerJid": sellers, // Change the seller
+"token": tokens, // Change the token
+"totalAmount1000": ammount, // Change the Total Amount
+"totalCurrencyCode": "IDR", // Up to you
+}
+}), { userJid: jid })
+alpha.relayMessage(jid, order.message, { messageId: order.key.id})
+}
 
-        //Punya gw
+//━━━━━━━━━━━━━━━━━━━━━━[ Security ]━━━━━━━━━━━━━━━━━━━━━━━━━━//Punya gw
+
         if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antilink && !isCreator && !isGroupAdmins && !isGroupOwner){
-        if (budy.match(/(chat.whatsapp.com)/gi)) {
+            if (budy.match(/(chat.whatsapp.com)/gi)) {
         	linkgrup = await alpha.groupInviteCode(m.chat)
-		if (budy.includes(linkgrup)) return
+	    	if (budy.includes(linkgrup)) return
         	reply(`「 *LINK GROUP TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
         	await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
 		}
 	}	    	    
-	    //Punya gw
 	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
-        	if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|0000000|1111111|7777777|8888888|9999999)/gi)) {
+        	if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|ࣻ|ۜ|ࣨ|ۧ|0000000|1111111|7777777|8888888|9999999)/gi)) {
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
 		}
 	}
+	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+        	if (m.mtype === 'productMessage') {
+        	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')
+		}
+	}
+	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+        	if (m.mtype === 'orderMessage') {
+        	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')
+		}
+	}	
+	    if (!m.isGroup && !m.key.fromMe && !isCreator){
+        	if (budy.length > 1000) {        
+        	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
+        	await alpha.updateBlockStatus(sender, 'block'))
+        }
+     }
 
-//━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//
-								
-		//punya gw
-		if (autovoice){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?anc([ou])k|c?([uo])k|ta?([ie])|🖕/gi)) {
+//━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
+				
+		if (autovoice && !m.key.fromMe && !isCreator){
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|t?e?m?p([ei])k|j?a?n?c([ou])k|c?([uo])k|t?a?([ie])|🖕|p?e?p?e([kg])|p?([le])?([rl])?r/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
 	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →?← ga usah pake huruf besar/kecil terserah 
@@ -304,11 +341,20 @@ user.afkReason = ''
             }
         }
 
+//punya gw
+global.hit = {}
+if (isCmd) {
+data = await fetchJson('https://api.countapi.xyz/hit/CheemsBot/visits')
+jumlahcmd = `${data.value}`
+dataa = await fetchJson(`https://api.countapi.xyz/hit/CheemsBot${moment.tz('Asia/Kolkata').format('DDMMYYYY')}/visits`)
+jumlahharian = `${dataa.value}`
+}
+
 //━━━━━━━━━━━━━━━━━━━━━━[ Setting ]━━━━━━━━━━━━━━━━━━━━━━━━━━//
   
         //punya gw
         if (autoread){
-           alpha.sendReadReceipt(m.chat, sender, [m.key.id])
+           alpha.sendReadReceipt(m.chat, m.sender, [m.key.id])
         }        
         if (autoketik){
            await alpha.sendPresenceUpdate('composing', m.chat)
@@ -1710,7 +1756,7 @@ break
 							alpha.sendKatalog2(m.chat, "ALL MENU BOT", lang.listMenu(time, salam, pushname, prefix), pp_bot, {quoted:m})
 							}
 						if(typemenu == 'list'){
-							alpha.sendListMenu(m.chat, `╭─⬣「 _*INFO USER*_ 」⬣\n│  *Name* : ${pushname}\n│  *Number* : ${sender.split("@")[0]}\n│  *Status* : ${isCreator? ` Owner️ ${botname}` :`User ${botname}`}\n╰─⬣\n\n╭─⬣「 _*INFO BOT*_ 」⬣\n│ *Prefix* :  ${prefix} \n│ *Name* : ${botname}\n│ *Owner* : ${ownername}\n│ *Mode* : ${alpha.public ? 'Public-Mode' : 'Self-Mode'}\n│ *Runtime* : ${runtime(process.uptime())}\n│ *Lib* : Baileys-Md@4.0.0\n╰─⬣\n\n╭─⬣「 _*INDONESIAN TIME*_ 」⬣\n│ *Wib* : ${time}\n│ *Wita* : ${wita}\n│ *Wit* : ${wit}  \n╰─⬣`, `© ${ownername}`, `Selamat ${salam} ${pushname} ☺️`, `CLICK HERE`, {quoted:fgif})
+							alpha.sendListMenu(m.chat, `╭─⬣「 _*INFO USER*_ 」⬣\n│  *Name* : ${pushname}\n│  *Number* : ${sender.split("@")[0]}\n│  *Status* : ${isCreator? ` Owner️ ${botname}` :`User ${botname}`}\n╰─⬣\n\n╭─⬣「 _*INFO BOT*_ 」⬣\n│ *Prefix* :  ${prefix} \n│ *Name* : ${botname}\n│ *Owner* : ${ownername}\n│ *Mode* : ${alpha.public ? 'Public-Mode' : 'Self-Mode'}\n│ *Runtime* : ${runtime(process.uptime())}\n│ *Jumlah CMD* : ${jumlahharian}\n│ *Total CMD* : ${jumlahcmd}\n│ *Lib* : Baileys-Md@4.0.0\n╰─⬣\n\n╭─⬣「 _*INDONESIAN TIME*_ 」⬣\n│ *Wib* : ${time}\n│ *Wita* : ${wita}\n│ *Wit* : ${wit}  \n╰─⬣`, `© ${ownername}`, `Selamat ${salam} ${pushname} 👋️`, `CLICK HERE`, {quoted:fgif})
 						}
 					}
 					break    
