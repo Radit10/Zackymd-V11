@@ -13,7 +13,7 @@ global.APIKeys = {
 
 // Setting //punya gw
 global.autoread = true // auto read pesan (auto read message)
-global.autoketik = true //status auto mengetik (auto typing)
+global.autoketik = false //status auto mengetik (auto typing)
 global.autorecording = false //status auto merekam (auto record)
 global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
