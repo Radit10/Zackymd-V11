@@ -159,9 +159,10 @@ module.exports = alpha = async (alpha, m, chatUpdate, store) => {
 			    irq: 0
             }
         })
-
+        
+        //punya gw
 		const reply = async (teks) => {
-			return await alpha.sendFakeLink(m.chat,teks,salam, pushname,ownername, thumbnail, myweb, m)
+			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: fs.readFileSync('./image/lol.jpg'), sourceUrl: `${myweb}`}}}, { quoted: m})			
 		}
 		
 		// DATABASE
