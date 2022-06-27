@@ -246,7 +246,7 @@ user.afkReason = ''
 	}	    	    
 	    //Punya gw
 	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
-        	if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|7777777|8888888|9999999)/gi)) {
+        	if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|0000000|1111111|7777777|8888888|9999999)/gi)) {
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
@@ -257,13 +257,13 @@ user.afkReason = ''
 								
 		//punya gw
 		if (autovoice){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?anc([ou])k|c?([uo])k/gi)) {
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?anc([ou])k|c?([uo])k|ta?([ie])|🖕/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
 	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →?← ga usah pake huruf besar/kecil terserah 
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/toninomor.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
-        } else if (budy.match(/(ye?sus|kris?ten|jas?j([uo])s)/gi)) {
+        } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/woikristen.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
         } else if (budy.match(/(ngen?to([dt]))/gi)) {
@@ -278,7 +278,7 @@ user.afkReason = ''
         }
 
         // Push Message To Console & //punya gw
-        if (isCmd) {
+        if (m.message) {
         	console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m CMD \x1b[1;37m]', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ), 'args :', chalk.green(args.length))                
         }
         
@@ -744,7 +744,7 @@ if (!m.isGroup) return reply(lang.groupOnly())
 						alpha.sendButMessage(from, 'Mode Antilink', `© ${ownername}`, [{buttonId: 'antilink on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'antilink off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: fgif})
 						}
 					break
-			case 'antivirus': //punya gw
+			case 'antivirus': case 'antivirtex': //punya gw
 			if (!m.isGroup) return reply(lang.groupOnly())
 			if (!isGroupAdmins && !isGroupOwner && !isCreator) return reply(lang.adminOnly())
 			if (!isBotAdmins) return reply(lang.botNotAdmin())
