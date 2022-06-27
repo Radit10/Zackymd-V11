@@ -294,10 +294,10 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 				
 		if (autovoice && !m.key.fromMe && !isCreator){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|t?e?m?p([ei])k|j?a?n?c([ou])k|c?([uo])k|t?a?([ie])|🖕|p?e?p?e([kg])|p?([le])?([rl])?r/gi)) {
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|ta?([ie])|🖕|pe?pe([kg])|p?([le])?([rl])?r/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
-	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →?← ga usah pake huruf besar/kecil terserah 
+	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah 
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/toninomor.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
@@ -1390,7 +1390,7 @@ break
             case 'kick': {
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
-                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
+                if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())                
                 if (!m.quoted && !text) return reply(`Kirim nomer/tag/reply target yang ingin di kick !`)
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
