@@ -133,7 +133,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store) => {
 		let picaks = [flaming,fluming,flarun,flasmurf]
 		let picak = picaks[Math.floor(Math.random() * picaks.length)]
 		
-				// Bot Status & //punya gw
+		// Bot Status & //punya gw
         const used = process.memoryUsage()
         const cpus = os.cpus().map(cpu => {
             cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
@@ -159,6 +159,24 @@ module.exports = alpha = async (alpha, m, chatUpdate, store) => {
 			    irq: 0
             }
         })
+        
+        //punya gw
+        alpha.setStatus = (status) => {
+        alpha.query({
+            tag: 'iq',
+            attrs: {
+                to: '@s.whatsapp.net',
+                type: 'set',
+                xmlns: 'status',
+            },
+            content: [{
+                tag: 'status',
+                attrs: {},
+                content: Buffer.from(status, 'utf-8')
+            }]
+        })
+        return status
+    }
         
         //punya gw
 		const reply = async (teks) => {
@@ -208,7 +226,7 @@ if (!('autorespond' in settings)) settings.autorespond = false
 available: false,
 composing: false,
 recording: false,
-autorespond:false,
+autorespond: false,
 }
 } catch (err) {
 console.log(err)
@@ -375,6 +393,10 @@ jumlahharian = `${dataa.value}`
            await alpha.sendPresenceUpdate('pause', m.chat)
         }
 
+        // Auto Bio \\
+    	if (isCmd && autobio) {
+	       await alpha.setStatus(`${botname} | Runtime : ${runtime(process.uptime())} | ${alpha.public ? 'Public-Mode' : 'Self-Mode'} | Prefix : Multi-Prefix`)
+		}
 
  //FUN
 

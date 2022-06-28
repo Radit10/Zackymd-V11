@@ -19,6 +19,7 @@ global.available = false //status online (online)
 global.unavailable = false //status offline (offline)
 global.pause = false //YNTKTS
 global.autovoice = true //prank autovoice (auto voice pas ada yg toxic) //punya gw
+global.autobio = true
 
 // Other
 global.botname = "ᏃᎯᏨᏦᎽ-Mdོ" //namabot kalian
