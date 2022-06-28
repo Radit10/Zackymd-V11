@@ -23,7 +23,7 @@ global.autovoice = true //prank autovoice (auto voice pas ada yg toxic) //punya 
 // Other
 global.botname = "ᏃᎯᏨᏦᎽ-Mdོ" //namabot kalian
 global.ownername= "ᴹᴿ᭄ ᴅᴏɴᴢ ×፝֟͜×" //nama kalian
-global.myweb = "https://chat.whatsapp.com/Kje9WvK8Xfg7FoKo4cwDOf" //bebas asal jan hapus
+global.myweb = "https://chat.whatsapp.com/B5xKfSwQR3a6258K9DXhiR" //bebas asal jan hapus
 global.youtube = "https://youtube.com/channel/UCJBH-edRR1zUy5X_Cw-5hJw" //bebas asal jan hapus
 global.github = "https://github.com/Radit10" //bebas
 global.email = "kontolodonz@gmail.com" //bebas

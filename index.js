@@ -294,8 +294,8 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 				
-		if (autovoice && !m.key.fromMe){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|ta?([ie])|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
+		if (autovoice && !m.key.fromMe && !isCreator){
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
 	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah 
