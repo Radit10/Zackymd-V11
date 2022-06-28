@@ -185,12 +185,14 @@ if (chats) {
 if (!('name' in chats)) chats.name = groupName || pushname
 if (!('mute' in chats)) chats.mute = true
 if (!('antivirus' in chats)) chats.antivirus = true
+if (!('antionce' in chats)) chats.antionce = true
 if (!('setWelcome' in chats)) chats.setWelcome = ''
 if (!('setLeave' in chats)) chats.setLeave = ''
 } else global.db.data.chats[m.chat] = {
 name: groupName || pushname,
 mute: true,
 antivirus: true,
+antionce: true,
 setWelcome: '',
 setLeave: '',
 }
@@ -298,7 +300,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
            if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
-	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah 
+	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah ! resiko semua chat dapat aktif / ketriggered 
            alpha.sendPresenceUpdate('recording', m.chat)
            await alpha.sendMessage(m.chat, { audio: { url: "mp3/toninomor.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
@@ -3946,10 +3948,11 @@ if (stdout) return m.reply(`*${botname}*\nEXEC: ${mengtermuk}\n\n${stdout}`)
 }
 }
 
-//Anti View Once
+//Anti View Once //punya gw
 
 if (m.mtype == 'viewOnceMessage') {
 	if (!db.data.chats[m.chat].antionce) return
+    if (isCreator) return
  teks = `「 *Anti ViewOnce Message* 」
 
 ⭔ Nama : ${m.pushName}
