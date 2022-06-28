@@ -3994,6 +3994,12 @@ await sleep(500)
 m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin dah pernah dibuka bot'))
 }
 
+// Detect Group Invite //punya gw
+if (m.mtype === 'groupInviteMessage') {
+teks = `Ga usah masukin gw ke grup ngentod`
+sendOrder(m.chat, teks, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+}
+
 const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
 const match = (prefix instanceof RegExp ? // RegExp Mode?
 [[prefix.exec(m.text), prefix]] :
