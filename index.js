@@ -324,7 +324,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 		}
 	}*/
 	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
-        	if (budy.length > 800) {        
+        	if (budy.length > 1000) {        
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
