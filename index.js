@@ -177,10 +177,20 @@ module.exports = alpha = async (alpha, m, chatUpdate, store) => {
         })
         return status
     }
+    
+        // Foto user //punya gw
+        try {
+             const ppuser = await alpha.profilePictureUrl(m.sender, 'image')
+        } catch {
+             const ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+        }
         
         //punya gw
 		const reply = async (teks) => {
 			return alpha.sendMessage(m.chat, { text: teks, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Selamat ${salam} ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ``, thumbnail: fs.readFileSync('./image/lol.jpg'), sourceUrl: `${myweb}`}}}, { quoted: m})			
+		}
+		const sendAudio = async (url) => {		
+		    return alpha.sendMessage(m.chat, { audio: { url: url }, mimetype: 'audio/mp4', ptt: true, contextInfo:{ externalAdReply: { showAdAttribution: true, title: `Contoh Anak Kontol ${pushname}`, body: `${ownername}`, previewType: "PHOTO", thumbnailUrl: ppuser, thumbnail: '', sourceUrl: `${myweb}`}}}, {quoted:m})
 		}
 		
 		// DATABASE
@@ -325,18 +335,27 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 		if (autovoice && !m.key.fromMe && !isCreator){
            if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})                
-	    } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah ! resiko semua chat dapat aktif / ketriggered 
-           alpha.sendPresenceUpdate('recording', m.chat)
-           await alpha.sendMessage(m.chat, { audio: { url: "mp3/toninomor.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
+           await sendAudio("mp3/desah.mp3")                	    
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await alpha.sendMessage(m.chat, { audio: { url: "mp3/woikristen.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})        
+           await sendAudio("mp3/woikristen.mp3")
         } else if (budy.match(/(ngen?to([dt]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await alpha.sendMessage(m.chat, { audio: { url: "mp3/disiningentod.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})
+           await sendAudio("mp3/disiningentod.mp3")
+        } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it)/gi)) {
+           alpha.sendPresenceUpdate('recording', m.chat)
+           await sendAudio("mp3/jedagjedugnolep.mp3")
+        } else if (budy.match(/(([sa])?yan?([gk]))/gi)) {
+           alpha.sendPresenceUpdate('recording', m.chat)
+           await sendAudio("mp3/cumamobilang.m4a")
+        } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah ! resiko semua chat dapat aktif / ketriggered 
+           alpha.sendPresenceUpdate('recording', m.chat)
+           await sendAudio("mp3/toninomor.mp3")
         }
-    }                
+    }  
+    
+    // Original
+    //await alpha.sendMessage(m.chat, { audio: { url: "mp3/desah.mp3" }, mimetype: 'audio/mp4', ptt: true }, {quoted:m})
                                 
         // Public & Self
         if (!alpha.public) {
