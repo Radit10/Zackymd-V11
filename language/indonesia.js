@@ -89,7 +89,7 @@ exports.menunya = (salam, pushname, botname) =>{
 saya ${botname}, bot ini adalah Beta Multi-Device Whatsapp.
 `
 }
-exports.listMenu = (time, salam, pushname, prefix) => {
+exports.listMenu = (time, salam, pushname, prefix) => {  //punya gw group|owner
     return `*Selamat ${salam} ${pushname}*
 *⌚Time Server : ${time}*
 *📚 List-Menu Alphabot-Md :*
@@ -132,6 +132,8 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ├ ${prefix}self
 ├ ${prefix}public [only bot]
 ├ ${prefix}del [reply pesan bot]
+├ ${prefix}block [nomor]
+├ ${prefix}unblock [nomor]
 ╰❒ ${prefix}setppbot [reply image]
 
 ╭─❒ 「 Store Menu 」
@@ -149,7 +151,7 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ╰❒ ${prefix}done [surah|ayat]
 
 
-╭─❒ 「 Database 」 
+╭─❒ 「 Database 」
 ├ ${prefix}setcmd [reply stiker]
 ├ ${prefix}delcmd [reply stiker]
 ├ ${prefix}listcmd
@@ -163,7 +165,7 @@ exports.listMenu = (time, salam, pushname, prefix) => {
 ╰❒ ${prefix}delmsg [nama file]
 
 
-╭─❒ 「 Group 」 //punya gw
+╭─❒ 「 Group 」
 ├ ${prefix}listonline
 ├ ${prefix}sider
 ├ ${prefix}wm packname|author
