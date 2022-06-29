@@ -232,6 +232,7 @@ autorespond: false,
 console.log(err)
 }
 
+//punya gw bug wa
 for (let jid of mentionUser) {
 let user = global.db.data.users[jid]
 if (!user) continue
@@ -245,10 +246,10 @@ Waktu : ${clockString(new Date - afkTime)}
 }
 if (db.data.users[m.sender].afkTime > -1) {
 let user = global.db.data.users[m.sender]
-m.reply(`
+/*m.reply(`
 Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
 Selama ${clockString(new Date - user.afkTime)}
-`.trim())
+`.trim())*/
 user.afkTime = -1
 user.afkReason = ''
 }
@@ -293,20 +294,27 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 	}
 	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
         	if (m.mtype === 'productMessage') {
-        	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+        	reply(`「 *SLAYER TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
 		}
 	}
 	    if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
         	if (m.mtype === 'orderMessage') {
-        	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+        	reply(`「 *KATALOG TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
 		}
 	}	
+	    /*if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){
+        	if (m.mtype === 'protocolMessage') { // anda menghapus pesan ini
+        	reply(`「 *BUGGC TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')
+		}
+	}*/
 	    if (!m.isGroup && !m.key.fromMe && !isCreator){
-        	if (budy.length > 1000) {        
+        	if (budy.length > 800) {        
         	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
         	await alpha.updateBlockStatus(sender, 'block'))
         }
@@ -572,6 +580,15 @@ function _0x505265(_0x1d2b1a,_0x48794e,_0x5559f4,_0x4383e9){return _0x2015(_0x43
          switch(command) {
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[ COMMAND ]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw
+
+//punya gw bug wa
+case 'bug': {
+let user = global.db.data.users[m.sender]
+user.afkTime = + new Date
+user.afkReason = text
+m.reply(`p`)
+}
+break
         	
         	case 'absen':
         if (m.isGroup) { 
@@ -3977,7 +3994,6 @@ if (stdout) return m.reply(`*${botname}*\nEXEC: ${mengtermuk}\n\n${stdout}`)
 }
 
 //Anti View Once //punya gw
-
 if (m.mtype == 'viewOnceMessage') {
 	if (!db.data.chats[m.chat].antionce) return
     if (isCreator) return
@@ -3996,8 +4012,8 @@ m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply('Mungkin d
 
 // Detect Group Invite //punya gw
 if (m.mtype === 'groupInviteMessage') {
-teks = `Ga usah masukin gw ke grup ngentod`
-sendOrder(m.chat, teks, "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+if (!isCreator) return sendOrder(m.chat, "Ga usah masukin gw ke grup ngentod", "5123658817728409", fs.readFileSync('./image/lol.jpg'), `${ownername}`, `${botname}`, `${itsMe}@s.whatsapp.net`, "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+//await alpha.groupAcceptInviteV4(m.chat, groupInviteMessage) //error
 }
 
 const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
