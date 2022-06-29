@@ -180,10 +180,11 @@ module.exports = alpha = async (alpha, m, chatUpdate, store) => {
     
         // Foto user //punya gw
         try {
-             const ppuser = await alpha.profilePictureUrl(m.sender, 'image')
+             const ppnya = await alpha.profilePictureUrl(m.sender, 'image')
         } catch {
-             const ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+             const ppnya = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
         }
+        const ppuser = ppnya
         
         //punya gw
 		const reply = async (teks) => {
