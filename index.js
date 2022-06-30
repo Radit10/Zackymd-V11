@@ -298,33 +298,53 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
      }
 		
 		// Anti Virus \\
-		if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){		    	    
+		//if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){		    	    
 	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|ࣻ|ۜ|ࣨ|ۧ|0000000|1111111|7777777|8888888|9999999)/gi)) {
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')			
+			alpha.updateBlockStatus(sender, 'block')
 	    } else if (m.mtype === 'productMessage') {
         	reply(`「 *SLAYER TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')			
+			alpha.updateBlockStatus(sender, 'block')
 	    } else if (m.mtype === 'orderMessage') {
         	reply(`「 *KATALOG TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
-			alpha.updateBlockStatus(sender, 'block')				
+			alpha.updateBlockStatus(sender, 'block')
+		} else if (m.mtype === 'locationMessage') {
+        	reply(`「 *VIRLOK TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			//alpha.updateBlockStatus(sender, 'block')
+		/*} else if (m.mtype === 'liveLocationMessage') {
+        	reply(`「 *KATALOG TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')*/
+		} else if (m.mtype === 'documentMessage') {
+        	reply(`「 *VIRDOC TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			//alpha.updateBlockStatus(sender, 'block')
+		/*} else if (m.mtype === 'audioMessage') {
+        	reply(`「 *KATALOG TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')*/
+		/*} else if (m.mtype === 'contactMessage') {
+        	reply(`「 *KATALOG TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
+			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
+			alpha.updateBlockStatus(sender, 'block')*/		
 	    /*} else if (m.mtype === 'protocolMessage') { // anda menghapus pesan ini
         	reply(`「 *BUGGC TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')*/
-	    } else if (budy.length > 1000) {        
+	    } else if (budy.length > 1000) {
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
         }
-     }
+    // }
      
         // Anti Spam \\
 	    if (!m.isGroup && !m.key.fromMe && !isCreator){
-        	if (budy.length > 500) {        
+        	if (budy.length > 500) {
         	reply('Bacot Hekel Ngentod, gak ngeleg dek🖕').then(async res => 
         	await alpha.updateBlockStatus(sender, 'block'))
         }
