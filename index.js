@@ -366,7 +366,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         }
 
         // Push Message To Console & //punya gw
-        if (m.message) {
+        if (isCmd) {
         	console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m CMD \x1b[1;37m]', time, chalk.green(command || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ), 'args :', chalk.green(args.length))                
         }
         
