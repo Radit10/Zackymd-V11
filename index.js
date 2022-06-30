@@ -340,24 +340,27 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 				
 		if (autovoice && !m.key.fromMe && !isCreator){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?([nm])to?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?([nm])to?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er|da([jk])?jal/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/desah.mp3")                	    
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/woikristen.mp3")
+           await sendAudio("mp3/woi_kristen.mp3")
         } else if (budy.match(/(ngen?to([dt]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/disiningentod.mp3")
-        } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it)/gi)) {
+           await sendAudio("mp3/disini_ngentod.mp3")
+        } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it|ker?ja|ga?but|pa?car|do?i|bes?ti|man?di|te?m([ae])n)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/jedagjedugnolep.mp3")
+           await sendAudio("mp3/jedag_jedug_nolep.mp3")
         } else if (budy.match(/(([sa])?yan?([gk]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/cumamobilang.m4a")
+           await sendAudio("mp3/cuma_mo_bilang.m4a")
         } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah, ! resiko semua chat dapat aktif / ketriggered, ? maksimal 2
            alpha.sendPresenceUpdate('recording', m.chat)
-           await sendAudio("mp3/toninomor.mp3")
+           await sendAudio("mp3/toni_nomor.mp3")
+        } else if (budy.match(/(ad?m([ie])n|ow?ner|pe?mi?lik|bu?at|ba?ca|ba?co([td])|ad?u|la?wan|ge?lu([td]))/gi)) {
+           alpha.sendPresenceUpdate('recording', m.chat)
+           await sendAudio("mp3/kalo_mau_bacot.mp3")
         }
     }  
     
