@@ -340,7 +340,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 //━━━━━━━━━━━━━━━━━━━━━━[ Voice ]━━━━━━━━━━━━━━━━━━━━━━━━━━//punya gw							
 				
 		if (autovoice && !m.key.fromMe && !isCreator){
-           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
+           if (budy.match(/(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?([nm])to?l|ba?bi|fu?ck|ta(e|i)|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)|tem?p([ei])k|j?an?c([ou])k|c?([uo])k|🖕|pe?pe([kg])|p([le])([rl])?er/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/desah.mp3")                	    
         } else if (budy.match(/(ye?s([uo])s|kris?ten|jas?j([uo])s|ba?pa)/gi)) {
@@ -355,7 +355,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         } else if (budy.match(/(([sa])?yan?([gk]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/cumamobilang.m4a")
-        } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah ! resiko semua chat dapat aktif / ketriggered 
+        } else if (budy.match(/(No|no|no?mor)/gi)) { // →co?k← ga usah pake huruf besar/kecil terserah, ! resiko semua chat dapat aktif / ketriggered, ? maksimal 2
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/toninomor.mp3")
         }
