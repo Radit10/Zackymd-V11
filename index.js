@@ -57,6 +57,8 @@ const db_respon_list = JSON.parse(fs.readFileSync('./database/list-message.json'
 
 pp_bot = fs.readFileSync(thumbnail)
 qris = fs.readFileSync(donasi)
+virgam = fs.readFileSync('./image/gamvir.jpeg')
+
 // language
 const  { ind } = require(`./language`)
 lang = ind //language
@@ -299,7 +301,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
 		
 		// Anti Virus \\
 		if (m.isGroup && !m.key.fromMe && db.data.chats[m.chat].antivirus && !isCreator && !isGroupAdmins && !isGroupOwner){		    	    
-	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|ࣻ|ۜ|ࣨ|ۧ|0000000|1111111|7777777|8888888|9999999)/gi)) {
+	    if (budy.match(/(๒|๑|৭|ด|ผ|ท|ง|า|ۿ|๕|๘|٩|๓|๗|๙|৫|ꫂ|闦|ᡃ⃟⃟|i⃟|ᡃ⃢⃢|ᡃ⃝|⃢⃝⃟⃕⃕|ℨ|᠀|📄|ı|ạ|ẉ|k̴̎|ɑ|ℰ|ℛ|Ø|✘|█|▒|𝀲|ࣧ|᥋|২|อ|เ|ม|ล|҈|ࣻ|ۜ|ࣨ|ۧ|0000000|1111111|7777777|8888888|9999999)/gi)) {
         	reply(`「 *VIRTEX TERDETEKSI* 」\nKamu akan dikeluarkan dari group\n*${groupMetadata.subject}*`).then(async res => 
 			await alpha.groupParticipantsUpdate(m.chat, [sender], 'remove'))
 			alpha.updateBlockStatus(sender, 'block')
@@ -362,7 +364,7 @@ alpha.relayMessage(jid, order.message, { messageId: order.key.id})
         } else if (budy.match(/(ngen?to([dt]))/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/disini_ngentod.mp3")
-        } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it|ker?ja|ga?but|pa?car|do?i|bes?ti|man?di|te?m([ae])n)/gi)) {
+        } else if (budy.match(/(no?lep|re?ba?han|tu?ru|ke?ras|el?it|ker?ja|ga?but|pa?car|do?i|bes?ti|man?di|te?m([ae])n|bu?c([ie])n)/gi)) {
            alpha.sendPresenceUpdate('recording', m.chat)
            await sendAudio("mp3/jedag_jedug_nolep.mp3")
         } else if (budy.match(/(([sa])?yan?([gk]))/gi)) {
@@ -625,13 +627,22 @@ function _0x505265(_0x1d2b1a,_0x48794e,_0x5559f4,_0x4383e9){return _0x2015(_0x43
 
 //punya gw bug wa
 case 'bug': {
+if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
 let user = global.db.data.users[m.sender]
 user.afkTime = + new Date
 user.afkReason = text
 m.reply(`p`)
 }
 break
-        	
+
+case 'jadivirus':
+if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
+let file = await alpha.downloadAndSaveMediaMessage(quoted)
+ini_buffer = fs.readFileSync(file)
+alpha.sendMessage(m.chat, { image: virgam, thumbnail : virgam, caption: 'Nih Fotonya\n\n⚠️*Perhatian.!!*⚠️\nFoto ini Mengandung Virus/Bug SW!!'})
+fs.unlinkSync(file)
+break
+            
         	case 'absen':
         if (m.isGroup) { 
   if (!(isGroupAdmins || isCreator))return reply(lang.adminOnly())
